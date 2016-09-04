@@ -21,11 +21,17 @@ then
    exit -1
 fi
 
+# make the project directory
 mkdir $PROJECT_NAME
+
+# copy the template project into the new directory
 cp $APP_ENGINE_DEFAULT_PROJECT/main.py ./$PROJECT_NAME
 cp $APP_ENGINE_DEFAULT_PROJECT/index.yaml ./$PROJECT_NAME
 cp $APP_ENGINE_DEFAULT_PROJECT/app.yaml ./$PROJECT_NAME
 cp $APP_ENGINE_DEFAULT_PROJECT/favicon.ico ./$PROJECT_NAME
+
+# change the name of the project in app.yaml
+sed -i "s/new-project-template/$PROJECT_NAME/g" ./$PROJECT_NAME/app.yaml
 
 echo "Project created."
 exit 0
