@@ -5,6 +5,7 @@ APP_ENGINE_DEFAULT_PROJECT=/home/coleman/Classes/CSSE480/google_appengine/new_pr
 
 args=("$@")
 
+# Parsing arguments and getting project name if none were given
 if [[ ${#args[@]} == 0 ]];
 then
     echo -e "Project name: \c"
@@ -17,7 +18,6 @@ else
 fi
 
 echo "Attempting to create project $PROJECT_NAME under $PWD"
-
 if [[ -d $PROJECT_NAME ]];
 then
    echo "Cannot create project, folder already exists."
@@ -26,6 +26,10 @@ fi
 
 # make the project directory
 mkdir $PROJECT_NAME
+
+# directories I will almost certainly be using
+mkdir $PROJECT_NAME/static
+mkdir $PROJECT_NAME/templates
 
 # copy the template project into the new directory
 cp $APP_ENGINE_DEFAULT_PROJECT/main.py ./$PROJECT_NAME
