@@ -5,12 +5,15 @@ APP_ENGINE_DEFAULT_PROJECT=/home/coleman/Classes/CSSE480/google_appengine/new_pr
 
 args=("$@")
 
-if [[ ${#args[@]} == 1 ]];
+if [[ ${#args[@]} == 0 ]];
 then
-   PROJECT_NAME=${args[0]}
-else
     echo -e "Project name: \c"
     read PROJECT_NAME
+elif [[ ${#args[@]} == 1 ]]; then
+   PROJECT_NAME=${args[0]}
+else
+    echo "Wrong number of arguments given"
+    exit -1
 fi
 
 echo "Attempting to create project $PROJECT_NAME under $PWD"
